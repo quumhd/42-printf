@@ -6,7 +6,7 @@
 /*   By: jdreissi <jdreissi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/15 18:22:59 by jdreissi          #+#    #+#             */
-/*   Updated: 2025/10/24 18:04:22 by jdreissi         ###   ########.fr       */
+/*   Updated: 2025/10/25 15:55:17 by jdreissi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,6 +76,7 @@ typedef struct s_parse_list
 	int	width;
 	int	minus;
 	int	zero;
+	int	dot;
 	int	precision;
 	int	hash;
 	int	space;

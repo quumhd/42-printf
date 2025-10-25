@@ -6,7 +6,7 @@
 /*   By: jdreissi <jdreissi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/20 12:21:05 by jdreissi          #+#    #+#             */
-/*   Updated: 2025/10/25 13:01:39 by jdreissi         ###   ########.fr       */
+/*   Updated: 2025/10/25 16:27:28 by jdreissi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ static void	(*g_convert[])(char c) = {
 ['c'] = &ft_putchar
 };
 
-static t_extended_list(*g_fill[256])(t_extended_list)= {
+static t_extended_list(*g_fill[])(t_extended_list)= {
 ['1' ... '9'] = &ft_fill_width,
 ['.'] = &ft_fill_precision,
 ['-'] = &ft_fill_minus,
@@ -37,11 +37,11 @@ t_parse_list	ft_fill_list(const char *type, t_parse_list parse_list, va_list arg
 	va_copy(extended_list.args, args);
 	extended_list.type = type;
 	extended_list.parse_list = parse_list;
-	printf("type[%d] = %d\n", i, type[i]);
+	// printf("type[%d] = %d\n", i, type[i]);
 	if (g_fill[(int)type[i]])
-		parse_list = g_fill[type[i]](extended_list).parse_list;
-		va_end(extended_list.args);
-		return (extended_list.parse_list);
+		extended_list.parse_list = g_fill[type[i]](extended_list).parse_list;
+	va_end(extended_list.args);
+	return (extended_list.parse_list);
 }
 
 int	ft_choose_arg(const char *type, va_list args, int length, int i)
@@ -53,10 +53,17 @@ int	ft_choose_arg(const char *type, va_list args, int length, int i)
 	parse_list.i = i;
 	while (!g_convert[(int)type[parse_list.i]] && parse_list.i < length)
 	{
-		ft_fill_list(type, parse_list, args, parse_list.i);
+		parse_list = ft_fill_list(type, parse_list, args, parse_list.i);
 		parse_list.i++;
 	}
 	printf("width = %d\n", parse_list.width);
+	printf("minus = %d\n", parse_list.minus);
+	printf("zero = %d\n", parse_list.zero);
+	printf("dot =  %d\n", parse_list.dot);
+	printf("precision = %d\n", parse_list.precision);
+	printf("hash = %d\n", parse_list.hash);
+	printf("space = %d\n", parse_list.space);
+	printf("plus = %d\n", parse_list.plus);
 	g_convert[(int)type[parse_list.i]](va_arg(args, int));
 	return (parse_list.i);
 }
@@ -89,7 +96,7 @@ int	ft_printf(const char *type, ...)
 
 int	main(void)
 {
-	ft_printf("%0c wasd test\n%-10c\n", 'a', 'b');
+	ft_printf("%+ 10.c wasd test\n", 'a');
 	// printf("%+538d\n", 255);
 	// int i = 0;
 	// int *ptr = &i;
