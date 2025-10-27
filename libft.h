@@ -6,7 +6,7 @@
 /*   By: jdreissi <jdreissi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/15 18:22:59 by jdreissi          #+#    #+#             */
-/*   Updated: 2025/10/25 15:55:17 by jdreissi         ###   ########.fr       */
+/*   Updated: 2025/10/27 17:04:39 by jdreissi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,32 +90,31 @@ typedef struct s_extented_list
 	t_parse_list	parse_list;
 }	t_extended_list;
 
-t_extended_list	ft_fill_width(t_extended_list parse_list);
-t_extended_list	ft_fill_minus(t_extended_list parse_list);
-t_extended_list	ft_fill_zero(t_extended_list parse_list);
-t_extended_list	ft_fill_precision(t_extended_list parse_list);
-t_extended_list	ft_fill_hash(t_extended_list parse_list);
-t_extended_list	ft_fill_space(t_extended_list parse_list);
-t_extended_list	ft_fill_plus(t_extended_list parse_list);
+typedef struct s_tostring
+{
+	t_parse_list	parse_list;
+}	t_tostring;
 
-// char *(*convert[])(char) = 
-// {
-// 	['c'] = ft_putchar
-// 	// ['s'] = 
-// 	// ['p'] = 
-// 	// ['d'] = 
-// 	// ['i'] = 
-// 	// ['u'] = 
-// 	// ['x'] = 
-// 	// ['X'] = 
-// 	// ['%'] =  
-// };
+t_extended_list	ft_fill_width(t_extended_list extended_list);
+t_extended_list	ft_fill_minus(t_extended_list extended_list);
+t_extended_list	ft_fill_zero(t_extended_list extended_list);
+t_extended_list	ft_fill_precision(t_extended_list extended_list);
+t_extended_list	ft_fill_hash(t_extended_list extended_list);
+t_extended_list	ft_fill_space(t_extended_list extended_list);
+t_extended_list	ft_fill_plus(t_extended_list extended_list);
 
-void	ft_putchar(char c);
-void	ft_putstr(char *s);
-void	ft_putchar(char c);
-void	ft_put_hex(ssize_t i, int big);
-void	ft_put_pointer(size_t t);
-void	ft_put_unsigned(size_t i);
+char	*ft_char(t_tostring tostring, va_list args);
+char	*ft_str(t_tostring tostring, va_list args);
+char	*ft_pointer(t_tostring tostring, va_list args);
+char	*ft_num(t_tostring tostring, va_list args);
+char	*ft_put_hex(t_tostring tostring, va_list args);
+char	*ft_put_uphex(t_tostring tostring, va_list args);
+char	*ft_percent(t_tostring tostring, va_list args);
+
+size_t	ft_putchar(int c);
+size_t	ft_putstr(char *s);
+int		ft_count_digits(int num);
+ssize_t	ft_count_hex(ssize_t num);
+size_t	ft_count_u_hex(size_t	num);
 
 #endif
