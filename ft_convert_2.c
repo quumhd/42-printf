@@ -6,7 +6,7 @@
 /*   By: jdreissi <jdreissi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/29 17:22:57 by jdreissi          #+#    #+#             */
-/*   Updated: 2025/10/29 17:23:50 by jdreissi         ###   ########.fr       */
+/*   Updated: 2025/12/01 15:59:02 by jdreissi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,5 +37,6 @@ int	ft_str(va_list args)
 
 int	ft_percent(va_list args)
 {
+	(void)args;
 	return (ft_putchar('%'));
 }

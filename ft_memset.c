@@ -6,11 +6,11 @@
 /*   By: jdreissi <jdreissi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/10 15:39:59 by jdreissi          #+#    #+#             */
-/*   Updated: 2025/10/29 12:23:52 by jdreissi         ###   ########.fr       */
+/*   Updated: 2025/12/01 16:04:18 by jdreissi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
+#include "printf.h"
 
 void	*ft_memset(void *s, int c, size_t n)
 {

@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   helper.c                                           :+:      :+:    :+:   */
+/*   ft_printf_helper.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jdreissi <jdreissi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/29 11:52:32 by jdreissi          #+#    #+#             */
-/*   Updated: 2025/10/29 17:23:17 by jdreissi         ###   ########.fr       */
+/*   Updated: 2025/12/01 15:44:51 by jdreissi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,10 @@
 
 size_t	ft_putchar(int c)
 {
-	write(1, &c, 1);
-	return (1);
+	int	check;
+
+	check = write(1, &c, 1);
+	return (check);
 }
 
 size_t	ft_putstr(char *s)
@@ -30,32 +32,47 @@ size_t	ft_putstr(char *s)
 	return (output_counter);
 }
 
-void	ft_put_base(char *base, ssize_t num, int *length)
+int	ft_put_base(char *base, ssize_t num, int *length)
 {
-	int	base_len;
+	int		check;
+	ssize_t	base_len;
 
 	base_len = ft_strlen(base);
 	if (num >= base_len)
-		ft_put_base(base, num / base_len, length);
-	*length = *length + ft_putchar(base[num % base_len]);
+		ft_put_base (base, num / base_len, length);
+	check = ft_putchar (base[num % base_len]);
+	if (check == -1)
+		return (check);
+	*length = *length + check;
+	return (1);
 }
 
-void	ft_put_pbase(char *base, size_t num, int *length)
+int	ft_put_pbase(char *base, size_t num, int *length)
 {
-	int	base_len;
+	int		check;
+	size_t	base_len;
 
 	base_len = ft_strlen(base);
 	if (num >= base_len)
 		ft_put_pbase(base, num / base_len, length);
-	*length = *length + ft_putchar(base[num % base_len]);
+	check = ft_putchar (base[num % base_len]);
+	if (check == -1)
+		return (check);
+	*length = *length + check;
+	return (1);
 }
 
-void	ft_put_hbase(char *base, unsigned int num, int *length)
+int	ft_put_hbase(char *base, unsigned int num, int *length)
 {
-	int	base_len;
+	int		check;
+	size_t	base_len;
 
 	base_len = ft_strlen(base);
 	if (num >= base_len)
 		ft_put_hbase(base, num / base_len, length);
-	*length = *length + ft_putchar(base[num % base_len]);
+	check = ft_putchar (base[num % base_len]);
+	if (check == -1)
+		return (check);
+	*length = *length + check;
+	return (1);
 }

@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: jdreissi <jdreissi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/10/10 15:31:31 by jdreissi          #+#    #+#             */
-/*   Updated: 2025/10/29 12:21:16 by jdreissi         ###   ########.fr       */
+/*   Created: 2025/12/01 15:13:52 by jdreissi          #+#    #+#             */
+/*   Updated: 2025/12/01 15:37:17 by jdreissi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,15 +14,12 @@
 
 size_t	ft_strlen(const char *s)
 {
-	size_t	i;
+	size_t	length;
 
-	i = 0;
-	while (s[i])
-		i++;
-	return (i);
+	length = 0;
+	while (s[length])
+	{
+		length++;
+	}
+	return (length);
 }
-// int main(void)
-// {
-// 	const char test[] = "\n\n\n\n\n\n";
-// 	printf("Meins: %ld\nOrginall: %ld", ft_strlen(test), strlen(test));
-// }
